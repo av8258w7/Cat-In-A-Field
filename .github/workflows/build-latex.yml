@@ -1,10 +1,14 @@
-name: Build LaTeX PDF
+name: Build and Commit LaTeX PDF
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    paths:
+      - '**.tex'
+      - '**.bib'
+
+permissions:
+  contents: write
 
 jobs:
   build_latex:
@@ -18,8 +22,8 @@ jobs:
         with:
           root_file: one.tex
 
-      - name: Upload compiled PDF
-        uses: actions/upload-artifact@v4
+      - name: Commit and push updated PDF
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          name: compiled-paper
-          path: one.pdf
+          commit_message: "Auto-update compiled one.pdf"
+          file_pattern: one.pdf
