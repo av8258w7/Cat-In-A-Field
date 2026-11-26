@@ -1,3 +1,0 @@
-*.tex diff=tex
-*.sty diff=tex
-*.cls diff=tex
