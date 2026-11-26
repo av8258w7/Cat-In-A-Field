@@ -1,8 +1,10 @@
 name: Build and Commit LaTeX PDF
 
 on:
+  workflow_dispatch:
   push:
-    branches: [ main ]
+    branches:
+      - Introduction-to-Quantum-Field-Theory
     paths:
       - '**.tex'
       - '**.bib'
